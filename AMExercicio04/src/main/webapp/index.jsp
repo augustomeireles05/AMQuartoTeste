@@ -18,7 +18,7 @@
 <main>
   <nav class="navbar navbar-dark bg-dark" aria-label="First navbar example">
     <div class="container-fluid">
-      <a class="navbar-brand" href="#">Never expand</a>
+      <a class="navbar-brand" href="#">EXERCICIO 04</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample01" aria-controls="navbarsExample01" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -52,39 +52,29 @@
 
 
 
-
-
-
+	<c:set var = "idade" scope = "session" value = "${18}"/>
+      <p>Informe sua idade : <c:out value = "${idade}"/></p>
+      <c:choose>
+         
+         <c:when test = "${idade >= 0 && idade < 18}">
+           	Você não pode tirar a CNH!
+         </c:when>
+         
+         <c:when test = "${idade >= 18}">
+            Você já pode tirar a CNH!
+         </c:when>
+         
+         <c:otherwise>
+            Informe uma idade válida!
+         </c:otherwise>
+      </c:choose>
 	
-<%!
-	String today(){
-		java.text.SimpleDateFormat dt = new java.text.SimpleDateFormat("yyyy-mm-dd hh:mm:ss");
-		return dt.format(new java.util.Date());
-	}
-%>
-
-	<c:set var="variavel" value="Primeira página JSP utilizando JSTL"/> 
-	<c:out value="${variavel}"/>
-	<c:set var="formatar" value="true"/>
-	<c:set var="d1" value="<%=new java.util.Date() %>"/>
-	<h1>A data de hoje é: <c:out value="${d1}"></c:out></h1>
-	<h1>A data de hoje é: <fmt:formatDate pattern ="yyyy-mm-ss" value = "${d1}"/> </h1>
-	<c:if test="${formatar == true }">
-		<p>Variável formatar = <c:out value="${formatar}"/></p>
-	</c:if>	
-	<h1>A data de hoje é: <c:choose>
-							<c:when test = "${formatar == true }">
-								<c:out value="<%=today() %>"/> <!-- ou gerar um arquivo. tld -->
-								</c:when>
-								<c:otherwise>
-									<:out value="${d1}"/>
-								</c:otherwise>
-						</c:choose>	</h1>
+	<br>
+	<hr>
 	
 	<button class="btn btn-danger">
 		<a href = "https://www.linkedin.com/in/augustomeireles05" "<c:url value = "/jsp/index.htm"/> class="text-decoration-none">LINKEDIN</a>
 	</button>
-	
 	
 </body>
 </html>
